@@ -1,4 +1,4 @@
-package topics;
+package com.example.lambdaTests.topics;
 
 import java.util.function.BinaryOperator;
 import java.util.stream.Stream;

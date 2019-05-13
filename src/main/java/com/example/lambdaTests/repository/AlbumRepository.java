@@ -1,15 +1,13 @@
-package service;
+package com.example.lambdaTests.repository;
 
-import domain.Album;
-import domain.Track;
-import org.junit.Test;
+import com.example.lambdaTests.domain.Album;
+import com.example.lambdaTests.domain.Track;
 
 import java.util.Arrays;
 
-public class AlbumServiceTest {
+public class AlbumRepository {
 
-    @Test
-    public void GetAlbums(){
+    public Album GetYellowSubmarine(){
 
         Track yellowSubamrine = Track.builder()
                 .name("Wellow Submarine")
@@ -42,14 +40,14 @@ public class AlbumServiceTest {
                 .build();
 
         Track peperland = Track.builder()
-              .name("Pepperland")
-              .durationInSeconds(139)
-              .build();
+                .name("Pepperland")
+                .durationInSeconds(139)
+                .build();
 
         Track seaOfTime = Track.builder()
-              .name("Sea of Time")
-              .durationInSeconds(180)
-              .build();
+                .name("Sea of Time")
+                .durationInSeconds(180)
+                .build();
 
         Track seaOfHoles = Track.builder()
                 .name("Sea of Holes")
@@ -66,7 +64,7 @@ public class AlbumServiceTest {
                 .durationInSeconds(137)
                 .build();
 
-        Track peperlandLaidWaste = Track.builder()
+        Track pepperLandLaidWaste = Track.builder()
                 .name("Perpperland Laid Waste")
                 .durationInSeconds(130)
                 .build();
@@ -76,8 +74,8 @@ public class AlbumServiceTest {
                 .durationInSeconds(130)
                 .build();
 
-        Album yellowSubmarine = Album.builder()
-                .Traks(Arrays.asList(yellowSubamrine,
+        return Album.builder()
+                .tracks(Arrays.asList(yellowSubamrine,
                         onlyNorthernSong,
                         allTogetherNow,
                         heyBulldog,
@@ -88,10 +86,9 @@ public class AlbumServiceTest {
                         seaOfHoles,
                         seaOfMonsters,
                         marchOfTheMeanies,
-                        peperlandLaidWaste,
+                        pepperLandLaidWaste,
                         yellowSubmarineInPeperland))
                 .build();
 
     }
-
 }

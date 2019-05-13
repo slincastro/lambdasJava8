@@ -1,9 +1,8 @@
-package domain;
+package com.example.lambdaTests.domain;
 
 import lombok.Builder;
 
 import java.util.List;
-import java.util.function.Consumer;
 
 /**
  * Created by scastro on 4/5/19.

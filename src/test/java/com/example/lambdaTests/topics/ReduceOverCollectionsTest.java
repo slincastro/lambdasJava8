@@ -1,6 +1,5 @@
-package topics;
+package com.example.lambdaTests.topics;
 
-import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.stream.Stream;
