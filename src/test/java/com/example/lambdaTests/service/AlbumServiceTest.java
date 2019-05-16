@@ -10,6 +10,7 @@ import java.util.IntSummaryStatistics;
 import java.util.List;
 import java.util.Map;
 
+import static java.util.stream.Collectors.groupingBy;
 import static java.util.stream.Collectors.partitioningBy;
 import static org.junit.Assert.assertEquals;
 
@@ -61,9 +62,25 @@ public class AlbumServiceTest {
                                 .equals("A")
                 ));
 
-
         assertEquals(expectedTracksBySide, albumPartitionedBySide.get(Boolean.TRUE).size());
         assertEquals(expectedTracksBySide, albumPartitionedBySide.get(Boolean.FALSE).size());
+    }
+
+    @Test
+    public void shouldReturn7tracksByEachSideUsingGroupBy(){
+        Album pleasePlease = new AlbumRepositoryImpl().GetPleasePleaseMe();
+        int expectedTracksBySide = 7;
+        String sideA = "A";
+        String sideB = "B";
+
+        Map<String, List<Track>> albumPartitionedBySide = pleasePlease
+                .getTracks()
+                .stream()
+                .collect(
+                        groupingBy(Track::getSide));
+
+        assertEquals(expectedTracksBySide, albumPartitionedBySide.get(sideA).size());
+        assertEquals(expectedTracksBySide, albumPartitionedBySide.get(sideB).size());
     }
 
     @Test
