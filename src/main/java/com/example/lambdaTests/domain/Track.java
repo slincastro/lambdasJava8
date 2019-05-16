@@ -11,5 +11,6 @@ import lombok.Getter;
 public class Track {
     private String name;
     private Integer durationInSeconds;
+    private String side;
 
 }
