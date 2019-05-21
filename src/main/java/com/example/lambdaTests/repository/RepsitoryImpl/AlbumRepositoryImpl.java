@@ -211,4 +211,6 @@ public class AlbumRepositoryImpl implements AlbumRepository {
                 ))
                 .build();
     }
+
+    //public Album
 }

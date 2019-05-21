@@ -4,6 +4,7 @@ import com.example.lambdaTests.domain.Artist;
 import org.junit.Test;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Optional;
 
 import static org.junit.Assert.*;
@@ -15,44 +16,9 @@ public class ArtistServiceTest {
 
         int expectedNumber = 4;
 
-        Artist singer = Artist
-                .builder()
-                .name("Paul McCartney")
-                .origin("London")
-                .build();
+        List<Artist> beatles = new ArtistService().GetBeatles();
 
-        Artist drummer = Artist
-                .builder()
-                .name("Ringo Starr")
-                .origin("London")
-                .build();
-
-        Artist singerGuitarist = Artist
-                .builder()
-                .name("Jhon Lennon")
-                .origin("London")
-                .build();
-
-        Artist guitarist = Artist
-                .builder()
-                .name("George Harrison")
-                .origin("London")
-                .build();
-
-        Artist beatles = Artist
-                .builder()
-                .name("The Beatles")
-                .origin("London")
-                .members(Arrays.asList(
-                        singer,
-                        drummer,
-                        singerGuitarist,
-                        guitarist
-                ))
-                .build();
-
-
-        assertEquals(expectedNumber, beatles.getMembers().get().size());
+        assertEquals(expectedNumber, beatles.size());
 
     }
 
