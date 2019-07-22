@@ -4,6 +4,7 @@ import com.example.lambdaTests.domain.Artist;
 import com.example.lambdaTests.service.ArtistService;
 import com.example.lambdaTests.topics.StringCollector;
 import com.example.lambdaTests.topics.StringCombiner;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.util.List;
@@ -11,6 +12,8 @@ import java.util.function.BiConsumer;
 import java.util.function.BinaryOperator;
 import java.util.function.Function;
 import java.util.function.Supplier;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static org.junit.Assert.assertEquals;
@@ -19,11 +22,6 @@ public class TestCustomCollector {
 
     @Test
     public void testIdentityConstraint() {
-        // From javadoc of Collector interface:
-        // The identity constraint says that for any partially accumulated result,
-        // combining it with an empty result container must produce an equivalent result.
-        // That is, for a partially accumulated result a that is the result of any series of
-        // accumulator and combiner invocations, a must be equivalent to combiner.apply(a, supplier.get()).
 
         StringCollector collector = new StringCollector(", ", "<!--", "-->");
         Supplier<StringCombiner> supplier = collector.supplier();
@@ -76,7 +74,7 @@ public class TestCustomCollector {
     }
 
     @Test
-    public void TestingStringCollector() {
+    public void testStringCollector() {
 
         List<Artist> artist = new ArtistService().GetBeatles();
         String expectedArtists = "[Paul McCartney,Ringo Starr,Jhon Lennon,George Harrison]";
@@ -87,5 +85,23 @@ public class TestCustomCollector {
 
         assertEquals(expectedArtists, result);
 
+    }
+
+    @Ignore
+    @Test
+    public void testReduceAsACollector(){
+        List<Artist> artist = new ArtistService().GetBeatles();
+        String expectedArtists = "[Paul McCartney,Ringo Starr,Jhon Lennon,George Harrison]";
+
+        String result = artist.stream()
+                .map(Artist::getName)
+                .collect(
+                        Collectors.reducing(
+                                new StringCombiner("[", ",","]"),
+                                name -> new StringCombiner("[", ",","]").add(name),
+                                StringCombiner::merge))
+                .toString();
+
+        assertEquals(expectedArtists, result);
     }
 }

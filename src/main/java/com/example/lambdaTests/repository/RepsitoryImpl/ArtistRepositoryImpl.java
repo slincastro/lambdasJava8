@@ -33,7 +33,7 @@ public class ArtistRepositoryImpl implements ArtistRepository {
                 .origin("London")
                 .build();
 
-        Artist beatles = Artist
+        return Artist
                 .builder()
                 .name("The Beatles")
                 .origin("London")
@@ -44,7 +44,5 @@ public class ArtistRepositoryImpl implements ArtistRepository {
                         guitarist
                 ))
                 .build();
-
-        return beatles;
     }
 }

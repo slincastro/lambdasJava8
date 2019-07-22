@@ -2,8 +2,6 @@ package com.example.lambdaTests.repository.RepsitoryImpl;
 
 import com.example.lambdaTests.domain.Album;
 import com.example.lambdaTests.domain.Track;
-import com.example.lambdaTests.repository.AlbumRepository;
-import com.sun.java.accessibility.util.Translator;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -11,7 +9,7 @@ import java.util.List;
 import java.util.Map;
 
 import static java.util.stream.Collectors.*;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 public class AlbumRepositoryImplTest {
 
@@ -33,7 +31,7 @@ public class AlbumRepositoryImplTest {
 
     @Test
     public void shouldReturn7tracksByEachSide() {
-        Album pleasePlease = albumRepository.GetPleasePleaseMe();
+        Album pleasePlease = albumRepository.getPleasePleaseMe();
         int expectedTracksBySide = 7;
 
         Map<Boolean, List<Track>> albumPartitionedBySide = pleasePlease
@@ -51,7 +49,7 @@ public class AlbumRepositoryImplTest {
 
     @Test
     public void shouldReturn7tracksByEachSideUsingGroupBy() {
-        Album pleasePlease = albumRepository.GetPleasePleaseMe();
+        Album pleasePlease = albumRepository.getPleasePleaseMe();
         int expectedTracksBySide = 7;
         String sideA = "A";
         String sideB = "B";
@@ -68,7 +66,7 @@ public class AlbumRepositoryImplTest {
 
     @Test
     public void shouldReturn6tracksOnSideA_7tracksOnSideB() {
-        Album yellowSubmarine = albumRepository.GetYellowSubmarine();
+        Album yellowSubmarine = albumRepository.getYellowSubmarine();
         int expectedTracksBySideA = 6;
         int expectedTracksBySideB = 7;
 
@@ -88,7 +86,7 @@ public class AlbumRepositoryImplTest {
 
     @Test
     public void shouldReturnTheNamesOfSongsByEachSide() {
-        Album yellowSubmarine = albumRepository.GetYellowSubmarine();
+        Album yellowSubmarine = albumRepository.getYellowSubmarine();
         int expectedTracksSideA = 6;
         int expectedTracksSideB = 7;
         String sideA = "A";
@@ -103,5 +101,82 @@ public class AlbumRepositoryImplTest {
 
         assertEquals(expectedTracksSideA, songsBySide.get(sideA).size());
         assertEquals(expectedTracksSideB, songsBySide.get(sideB).size());
+    }
+
+
+    @Test
+    public void shouldReturn7TracksBySide(){
+        Album withTheBeatles = albumRepository.getWithTheBeatles();
+        int expectedTracksSideA = 7;
+        int expectedTracksSideB = 7;
+        String sideA = "A";
+        String sideB = "B";
+
+        Map<String, List<String>> songsBySide = withTheBeatles
+                .getTracks()
+                .stream()
+                .collect(
+                        groupingBy(Track::getSide, mapping(Track::getName, toList()))
+                );
+
+        assertEquals(expectedTracksSideA, songsBySide.get(sideA).size());
+        assertEquals(expectedTracksSideB, songsBySide.get(sideB).size());
+    }
+
+    @Test
+    public void shouldReturn14TracksInWithTheBeatles(){
+        Album withTheBeatles = albumRepository.getWithTheBeatles();
+
+        assertEquals(withTheBeatles.getTracks().size(), 14);
+    }
+
+    @Test
+    public void shouldReturn12Tracks(){
+        Album meetTheBeatles = albumRepository.getMeetTheBeatles();
+        int expectedTracks = 12;
+
+        assertEquals(expectedTracks,meetTheBeatles.getTracks().size());
+    }
+
+    @Test
+    public void shouldGet6TRacksBySide(){
+        Album meetTheBeatles = albumRepository.getMeetTheBeatles();
+        int expectedTracksSideA = 6;
+        int expectedTracksSideB = 6;
+        String sideA = "A";
+        String sideB = "B";
+
+        Map<String, List<String>> songsBySide = meetTheBeatles
+                .getTracks()
+                .stream()
+                .collect(
+                        groupingBy(Track::getSide, mapping(Track::getName, toList()))
+                );
+
+        assertEquals(expectedTracksSideA,songsBySide.get(sideA).size());
+        assertEquals(expectedTracksSideB,songsBySide.get(sideB).size());
+    }
+
+    @Test
+    public void shouldGet11TracksInTheBeatlesSecondAlbum(){
+        Album theBeatlesSecondAlbum = albumRepository.getBeatlesSecondAlbum();
+
+        assertEquals(11, theBeatlesSecondAlbum.getTracks().size());
+    }
+
+    @Test
+    public void shouldGet11inSideA(){
+        Album theBeatlesSecondAlbum = albumRepository.getBeatlesSecondAlbum();
+        int expectedTracksSideA = 11;
+        String sideA = "A";
+
+        Map<String,List<String>> songsBySide = theBeatlesSecondAlbum
+                .getTracks()
+                .stream()
+                .collect(
+                        groupingBy(Track::getSide, mapping(Track::getName, toList()))
+                );
+
+        assertEquals(expectedTracksSideA, songsBySide.get(sideA).size());
     }
 }

@@ -14,6 +14,7 @@ import java.util.NoSuchElementException;
 @Getter
 public class Album {
     String name;
+    int year;
     List<Track> tracks;
     List<Artist> musicians;
 
