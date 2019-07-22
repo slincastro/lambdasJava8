@@ -510,6 +510,7 @@ public class AlbumRepositoryImpl implements AlbumRepository {
                                 sheLovesYou
                         )
                 )
+                .year(1964)
                 .build();
     }
 
