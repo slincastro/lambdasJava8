@@ -514,4 +514,110 @@ public class AlbumRepositoryImpl implements AlbumRepository {
                 .build();
     }
 
+
+    public Album getHardDaysNight() {
+
+        Track aHardDaysNight = Track.builder()
+                .durationInSeconds(154)
+                .name("A Hard Day's Night")
+                .side("A")
+                .build();
+
+        Track iShouldHaveKnownBetter = Track.builder()
+                .durationInSeconds(164)
+                .name("I Should Have Known Better")
+                .side("A")
+                .build();
+
+        Track ifIFell = Track.builder()
+                .durationInSeconds(143)
+                .name("If I Fell")
+                .side("A")
+                .build();
+
+        Track justToDanceWithYou = Track.builder()
+                .durationInSeconds(177)
+                .name("I'm Happy Just to Dance with You")
+                .side("A")
+                .build();
+
+        Track andILoveHer = Track.builder()
+                .durationInSeconds(154)
+                .name("And I Love Her")
+                .side("A")
+                .build();
+
+
+        Track tellMeWhy = Track.builder()
+                .durationInSeconds(131)
+                .name("Tell Me Why")
+                .side("A")
+                .build();
+
+        Track cantBuyMeLove = Track.builder()
+                .durationInSeconds(136)
+                .name("Can't Buy Me Love")
+                .side("A")
+                .build();
+
+
+        Track anyTimeAtAll = Track.builder()
+                .durationInSeconds(134)
+                .name("Any Time at All")
+                .side("B")
+                .build();
+
+        Track illCryInstead = Track.builder()
+                .durationInSeconds(105)
+                .name("I'll Cry Instead")
+                .side("B")
+                .build();
+
+
+        Track thingsWeSaidToday = Track.builder()
+                .durationInSeconds(160)
+                .name("Things We Said Today")
+                .side("B")
+                .build();
+
+        Track WhenIGetHome = Track.builder()
+                .durationInSeconds(135)
+                .name("When I Get Home")
+                .side("B")
+                .build();
+
+        Track youCantDoThat = Track.builder()
+                .durationInSeconds(160)
+                .name("You Can't Do That")
+                .side("B")
+                .build();
+
+        Track illBeBack = Track.builder()
+                .durationInSeconds(143)
+                .name("I'll Be Back")
+                .side("B")
+                .build();
+
+        return Album.builder()
+                .tracks(
+                        Arrays.asList(
+                                aHardDaysNight,
+                                iShouldHaveKnownBetter,
+                                ifIFell,
+                                justToDanceWithYou,
+                                andILoveHer,
+                                tellMeWhy,
+                                cantBuyMeLove,
+                                anyTimeAtAll,
+                                illCryInstead,
+                                thingsWeSaidToday,
+                                WhenIGetHome,
+                                youCantDoThat,
+                                illBeBack
+                        )
+                )
+                .year(1964)
+                .name("A Hard Day's Night ")
+                .build();
+    }
 }

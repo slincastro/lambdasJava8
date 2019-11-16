@@ -179,4 +179,11 @@ public class AlbumRepositoryImplTest {
 
         assertEquals(expectedTracksSideA, songsBySide.get(sideA).size());
     }
+
+    @Test
+    public void shouldGet13TracksInHardsDayNight(){
+        Album hardDaysNight = albumRepository.getHardDaysNight();
+
+        assertEquals(13, hardDaysNight.getTracks().size());
+    }
 }
