@@ -103,6 +103,7 @@ public class AlbumRepositoryImpl implements AlbumRepository {
                         pepperLandLaidWaste,
                         yellowSubmarineInPeperland))
                 .year(1969)
+                .name("Yellow Submarine")
                 .build();
 
     }
